@@ -16,6 +16,9 @@ Route::get('/dashboard/About', function () {
 Route::get('/dashboard/tasks', function () {
     return Inertia::render('tasks');
 })->name('tasks');
+Route::get('/dashboard/tasks-create', function () {
+    return Inertia::render('tasks-create');
+})->name('tasks-create');
 
 Route::get('/dashboard/Messages-Notifications', function () {
     return Inertia::render('Messages-Notifications');
