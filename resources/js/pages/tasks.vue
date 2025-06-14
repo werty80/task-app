@@ -10,7 +10,7 @@
             <section>
                 <h2 class="mb-6 border-b border-gray-700 pb-2 text-2xl font-semibold">Pending Tasks List</h2>
                 <div class="mt-5 px-3 mb-5">
-                    <a href="/contact/create" class="inline-flex rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700">
+                    <a href="/tasks-create" class="inline-flex rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700">
                         <Plus class="h-6 w-6" />
                         Create Task
                     </a>
@@ -49,15 +49,10 @@
     </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { ref } from 'vue';
 import { Link } from '@inertiajs/vue3';
 import { Plus } from 'lucide-vue-next';
-
-export default {
-    name: 'PendingTasks',
-    components: { Plus, Link },
-    setup() {
         const tasks = ref([
             { id: 1, name: 'Task 1', description: 'This is the first pending task.' },
             { id: 2, name: 'Task 2', description: 'This task needs to be completed soon.' },
@@ -69,13 +64,6 @@ export default {
         const markAsComplete = (id: number) => {
             tasks.value = tasks.value.filter((task) => task.id !== id);
         };
-
-        return {
-            tasks,
-            markAsComplete,
-        };
-    },
-};
 </script>
 
 <style scoped></style>
