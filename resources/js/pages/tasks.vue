@@ -5,9 +5,7 @@
             <h1 class="text-center text-3xl font-extrabold text-yellow-400 tracking-wide">📝 Pending Tasks</h1>
         </header>
 
-        <!-- Main Content -->
         <main class="flex-1 px-4 py-8 max-w-4xl mx-auto w-full">
-            <!-- Section Title -->
             <section>
                 <div class="flex items-center justify-between mb-6 border-b border-gray-700 pb-2">
                     <h2 class="text-2xl font-semibold tracking-tight">Task List</h2>
@@ -20,7 +18,6 @@
                     </a>
                 </div>
 
-                <!-- Task List -->
                 <transition-group name="fade" tag="ul" class="space-y-4">
                     <li
                         v-for="task in tasks"
@@ -41,11 +38,9 @@
                     </li>
                 </transition-group>
 
-                <!-- Empty State -->
                 <p v-if="!tasks.length" class="text-center text-gray-500 mt-10 text-lg">🎉 All tasks are completed!</p>
             </section>
 
-            <!-- Back Link -->
             <div class="mt-12 text-center">
                 <Link
                     href="/dashboard"
