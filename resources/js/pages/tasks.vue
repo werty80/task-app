@@ -1,48 +1,57 @@
 <template>
-    <div class="flex min-h-screen flex-col bg-black text-white">
+    <div class="min-h-screen flex flex-col bg-gray-950 text-white">
         <!-- Header -->
-        <header class="bg-gray-900 py-5 shadow-md">
-            <h1 class="text-center text-3xl font-bold text-yellow-400">Pending Tasks</h1>
+        <header class="bg-gray-900 shadow-md py-6 px-4">
+            <h1 class="text-center text-3xl font-extrabold text-yellow-400 tracking-wide">📝 Pending Tasks</h1>
         </header>
 
         <!-- Main Content -->
-        <main class="mx-auto w-full max-w-3xl flex-1 p-6">
+        <main class="flex-1 px-4 py-8 max-w-4xl mx-auto w-full">
+            <!-- Section Title -->
             <section>
-                <h2 class="mb-6 border-b border-gray-700 pb-2 text-2xl font-semibold">Pending Tasks List</h2>
-                <div class="mt-5 px-3 mb-5">
-                    <a href="/tasks-create" class="inline-flex rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700">
-                        <Plus class="h-6 w-6" />
+                <div class="flex items-center justify-between mb-6 border-b border-gray-700 pb-2">
+                    <h2 class="text-2xl font-semibold tracking-tight">Task List</h2>
+                    <a
+                        href="/tasks-create"
+                        class="inline-flex items-center gap-2 rounded-md bg-blue-600 px-4 py-2 text-sm font-medium hover:bg-blue-700 transition-colors"
+                    >
+                        <Plus class="w-5 h-5" />
                         Create Task
                     </a>
                 </div>
-                <transition-group name="fade" tag="ul" v-if="tasks.length" class="space-y-4">
+
+                <!-- Task List -->
+                <transition-group name="fade" tag="ul" class="space-y-4">
                     <li
                         v-for="task in tasks"
                         :key="task.id"
-                        class="flex items-start justify-between rounded-lg bg-gray-800 p-4 shadow-md transition-shadow hover:shadow-lg"
+                        class="flex items-start justify-between bg-gray-800 px-5 py-4 rounded-xl shadow-md hover:shadow-lg transition-shadow group"
                     >
                         <div>
-                            <p class="text-lg font-bold">{{ task.name }}</p>
-                            <p class="text-sm text-gray-400">{{ task.description }}</p>
+                            <p class="text-lg font-semibold text-white group-hover:text-yellow-300">{{ task.name }}</p>
+                            <p class="text-sm text-gray-400 mt-1">{{ task.description }}</p>
                         </div>
                         <button
-                            class="ml-4 rounded-md bg-green-600 px-4 py-2 text-sm font-semibold transition-colors hover:bg-green-500 active:bg-green-700"
                             @click="markAsComplete(task.id)"
+                            class="ml-4 shrink-0 rounded-lg bg-green-600 px-3 py-2 text-sm font-medium text-white hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-green-400 transition"
+                            aria-label="Mark task as complete"
                         >
                             Mark Complete
                         </button>
                     </li>
                 </transition-group>
 
-                <p v-else class="mt-6 text-center text-lg text-gray-400">No pending tasks available.</p>
+                <!-- Empty State -->
+                <p v-if="!tasks.length" class="text-center text-gray-500 mt-10 text-lg">🎉 All tasks are completed!</p>
             </section>
 
-            <div class="mt-10 text-center">
+            <!-- Back Link -->
+            <div class="mt-12 text-center">
                 <Link
                     href="/dashboard"
-                    class="rounded bg-amber-700 px-6 py-2 font-bold text-white shadow-md transition duration-200 hover:bg-amber-800"
+                    class="inline-block rounded-lg bg-amber-700 px-6 py-2 text-white font-semibold hover:bg-amber-800 transition"
                 >
-                    ← Go Back
+                    ← Back to Dashboard
                 </Link>
             </div>
         </main>
@@ -50,20 +59,30 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import { Link } from '@inertiajs/vue3';
-import { Plus } from 'lucide-vue-next';
-        const tasks = ref([
-            { id: 1, name: 'Task 1', description: 'This is the first pending task.' },
-            { id: 2, name: 'Task 2', description: 'This task needs to be completed soon.' },
-            { id: 3, name: 'Task 3', description: 'Another important task.' },
-            { id: 4, name: 'Task 4', description: 'This is a very important task.' },
-            { id: 5, name: 'Task 5', description: 'This task is very important.' },
-        ]);
+import { ref } from 'vue'
+import { Link } from '@inertiajs/vue3'
+import { Plus } from 'lucide-vue-next'
 
-        const markAsComplete = (id: number) => {
-            tasks.value = tasks.value.filter((task) => task.id !== id);
-        };
+const tasks = ref([
+    { id: 1, name: 'Task 1', description: 'This is the first pending task.' },
+    { id: 2, name: 'Task 2', description: 'This task needs to be completed soon.' },
+    { id: 3, name: 'Task 3', description: 'Another important task.' },
+    { id: 4, name: 'Task 4', description: 'This is a very important task.' },
+    { id: 5, name: 'Task 5', description: 'This task is very important.' },
+])
+
+const markAsComplete = (id: number) => {
+    tasks.value = tasks.value.filter(task => task.id !== id)
+}
 </script>
 
-<style scoped></style>
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.3s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
+</style>
