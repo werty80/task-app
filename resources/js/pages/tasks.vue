@@ -2,7 +2,9 @@
     <div class="min-h-screen flex flex-col bg-gray-950 text-white">
         <!-- Header -->
         <header class="bg-gray-900 shadow-md py-6 px-4">
-            <h1 class="text-center text-3xl font-extrabold text-yellow-400 tracking-wide">📝 Pending Tasks</h1>
+            <h1 class="text-center text-3xl font-extrabold text-yellow-400 tracking-wide">
+                📝 Pending Tasks
+            </h1>
         </header>
 
         <main class="flex-1 px-4 py-8 max-w-4xl mx-auto w-full">
