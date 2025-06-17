@@ -3,7 +3,7 @@
         <!-- Header -->
         <header class="bg-gray-900 shadow-md py-6 px-4">
             <h1 class="text-center text-3xl font-extrabold text-yellow-400 tracking-wide">
-                📝 Pending Tasks
+                Pending Tasks
             </h1>
         </header>
 
