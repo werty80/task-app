@@ -12,7 +12,7 @@
                 <div class="flex items-center justify-between mb-6 border-b border-gray-700 pb-2">
                     <h2 class="text-2xl font-semibold tracking-tight">Task List</h2>
                     <a
-                        href="/tasks-create"
+                        href="/dashboard/tasks/tasks-create"
                         class="inline-flex items-center gap-2 rounded-md bg-blue-600 px-4 py-2 text-sm font-medium hover:bg-blue-700 transition-colors"
                     >
                         <Plus class="w-5 h-5" />
